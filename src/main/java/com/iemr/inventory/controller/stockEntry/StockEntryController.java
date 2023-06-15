@@ -21,7 +21,6 @@
 */
 package com.iemr.inventory.controller.stockEntry;
 
-
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -50,33 +49,28 @@ import io.swagger.annotations.ApiOperation;
 public class StockEntryController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-	
+
 	@Autowired
 	private StockEntryServiceImpl stockEntryService;
-	
-	@CrossOrigin()
-	@ApiOperation(
-			value = "Physical Stock Entry",
-			consumes = "application/json",
-			produces = "application/json")
-	@RequestMapping(value =  "/physicalStockEntry" ,headers = "Authorization", method = { RequestMethod.POST })
-	public String physicalStockEntry(@RequestBody PhysicalStockEntry physicalStockEntry)  {
-		
-			OutputResponse output = new OutputResponse();
 
-					
-			
-			try {
-				physicalStockEntry=stockEntryService.savePhysicalStockEntry(physicalStockEntry);
-				
-				output.setResponse(physicalStockEntry.toString());
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				output.setError(e);
-			}
-			return output.toString();
+	@CrossOrigin()
+	@ApiOperation(value = "Physical Stock Entry", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/physicalStockEntry", headers = "Authorization", method = { RequestMethod.POST })
+	public String physicalStockEntry(@RequestBody PhysicalStockEntry physicalStockEntry) {
+
+		OutputResponse output = new OutputResponse();
+
+		try {
+			physicalStockEntry = stockEntryService.savePhysicalStockEntry(physicalStockEntry);
+
+			output.setResponse(physicalStockEntry.toString());
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			output.setError(e);
+		}
+		return output.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getItemBatchForStoreID", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
@@ -100,11 +94,12 @@ public class StockEntryController {
 		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/allocateStockFromItemID/{facilityID}", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String allocateStockFromItemID(@PathVariable("facilityID") Integer facilityID,@RequestBody List<ItemStockExit> itemStockExitList) {
+	public String allocateStockFromItemID(@PathVariable("facilityID") Integer facilityID,
+			@RequestBody List<ItemStockExit> itemStockExitList) {
 
 		OutputResponse response = new OutputResponse();
 
@@ -124,7 +119,7 @@ public class StockEntryController {
 		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getPhysicalStockEntry", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
@@ -148,8 +143,7 @@ public class StockEntryController {
 		 */
 		return response.toString();
 	}
-	
-	// this method is fetch all the mapped items and availabe Batch the store can trade with with partial itemname search
+
 	@CrossOrigin()
 	@RequestMapping(value = "/itemBatchPartialSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
@@ -159,7 +153,8 @@ public class StockEntryController {
 
 		try {
 
-			List<ItemStockEntry> getData = stockEntryService.getItemMastersPartialSearch(getItem.getItemName(),getItem.getFacilityID());
+			List<ItemStockEntry> getData = stockEntryService.getItemMastersPartialSearch(getItem.getItemName(),
+					getItem.getFacilityID());
 
 			response.setResponse(getData.toString());
 
@@ -173,6 +168,7 @@ public class StockEntryController {
 		 */
 		return response.toString();
 	}
+
 	@CrossOrigin()
 	@RequestMapping(value = "/itemBatchWithZeroPartialSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
@@ -182,7 +178,8 @@ public class StockEntryController {
 
 		try {
 
-			List<ItemStockEntry> getData = stockEntryService.getItemMastersPartialSearchWithZero(getItem.getItemName(),getItem.getFacilityID());
+			List<ItemStockEntry> getData = stockEntryService.getItemMastersPartialSearchWithZero(getItem.getItemName(),
+					getItem.getFacilityID());
 
 			response.setResponse(getData.toString());
 
@@ -196,7 +193,7 @@ public class StockEntryController {
 		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getPhysicalStockEntryItems", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
@@ -205,7 +202,7 @@ public class StockEntryController {
 		OutputResponse response = new OutputResponse();
 
 		try {
-//String getData="";
+
 			List<ItemStockEntry> getData = stockEntryService.getPhysicalStockEntryItems(getItem.getPhyEntryID());
 
 			response.setResponse(getData.toString());
@@ -220,8 +217,7 @@ public class StockEntryController {
 		 */
 		return response.toString();
 	}
-	
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getItemwithQuantityPartialSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
@@ -231,7 +227,8 @@ public class StockEntryController {
 
 		try {
 
-			List<ItemMasterWithQuantityMap> getData = stockEntryService.getItemwithQuantityPartialSearch(getItem.getItemName(),getItem.getFacilityID());
+			List<ItemMasterWithQuantityMap> getData = stockEntryService
+					.getItemwithQuantityPartialSearch(getItem.getItemName(), getItem.getFacilityID());
 
 			response.setResponse(getData.toString());
 
@@ -245,5 +242,5 @@ public class StockEntryController {
 		 */
 		return response.toString();
 	}
-	
+
 }

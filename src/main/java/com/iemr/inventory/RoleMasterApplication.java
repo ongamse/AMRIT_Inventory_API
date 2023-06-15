@@ -33,7 +33,7 @@ import com.iemr.inventory.utils.config.ConfigProperties;
 @SpringBootApplication
 @EnableCaching(proxyTargetClass = true)
 public class RoleMasterApplication {
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(roleMasterApplication, args);
 	}

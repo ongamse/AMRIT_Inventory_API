@@ -68,9 +68,6 @@ public class FacilitytypeController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -95,9 +92,6 @@ public class FacilitytypeController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -129,9 +123,6 @@ public class FacilitytypeController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -159,9 +150,6 @@ public class FacilitytypeController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 }

@@ -35,39 +35,35 @@ public class ExpiryReport {
 	private Long slNo;
 
 	private String facilityName;
-	
+
 	private String itemName;
-	
+
 	private String itemCategory;
-	
+
 	private String batchNo;
-	
+
 	private Double unitCostPrice;
-	
+
 	private Date expiryDate;
-	
+
 	private Integer quantityInHand;
-	
-//	private Integer qtyExpired;
-//	
-//  private Integer quantity;
-	
+
 	public ExpiryReport() {
-		
+
 	}
-	public ExpiryReport(String facilityName,String itemName,String itemCategory,String batchNo, 
-			Double unitCostPrice,Date expiryDate, Integer quantityInHand) 
-	{
-		
-		this.facilityName= facilityName;
-		this.itemName= itemName;
-		this.itemCategory= itemCategory;
-		this.batchNo= batchNo;
-		this.unitCostPrice= unitCostPrice;
-		this.expiryDate= expiryDate;
-		this.quantityInHand= quantityInHand;
+
+	public ExpiryReport(String facilityName, String itemName, String itemCategory, String batchNo, Double unitCostPrice,
+			Date expiryDate, Integer quantityInHand) {
+
+		this.facilityName = facilityName;
+		this.itemName = itemName;
+		this.itemCategory = itemCategory;
+		this.batchNo = batchNo;
+		this.unitCostPrice = unitCostPrice;
+		this.expiryDate = expiryDate;
+		this.quantityInHand = quantityInHand;
 	}
-	
+
 	@Override
 	public String toString() {
 
@@ -76,4 +72,4 @@ public class ExpiryReport {
 
 	}
 
-	}
+}

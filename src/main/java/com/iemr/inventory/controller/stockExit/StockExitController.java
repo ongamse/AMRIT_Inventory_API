@@ -86,7 +86,6 @@ public class StockExitController {
 			if (value == 1) {
 				output.setResponse("Successfully Created");
 			} else {
-				// output.setResponse("Error in Quantity");
 				throw new Exception("Error occured while saving the request");
 			}
 		} catch (Exception e) {
@@ -136,9 +135,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -160,9 +156,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -183,9 +176,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -207,9 +197,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -231,9 +218,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -256,9 +240,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -280,9 +261,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 }

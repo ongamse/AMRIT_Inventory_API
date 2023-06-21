@@ -73,12 +73,12 @@ public class DBConfig {
 		return datasource;
 	}
 
-	@Primary
-	@Bean(name = "entityManagerFactory")
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,
-			@Qualifier("dataSource") DataSource dataSource) {
-		return builder.dataSource(dataSource).packages("com.iemr.inventory.*").persistenceUnit("db_iemr").build();
-	}
+//	@Primary
+//	@Bean(name = "entityManagerFactory")
+//	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,
+//			@Qualifier("dataSource") DataSource dataSource) {
+//		return builder.dataSource(dataSource).packages("com.iemr.inventory.*").persistenceUnit("db_iemr").build();
+//	}
 
 	@Primary
 	@Bean(name = "transactionManager")

@@ -227,7 +227,10 @@ public class CRMReportServiceImpl implements CRMReportService {
 					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
 					totalQuantityReceived = 0L;
 				}
-
+				Timestamp itemEntryDate = null;
+				if(objects[9]!=null) {
+					 itemEntryDate = (Timestamp) objects[9];
+				}
 				DailyStockDetails stockDetail = new DailyStockDetails();
 				stockDetail.setSlNo(slNo++);
 				stockDetail.setDate(entryReport.getStartDate());
@@ -241,6 +244,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 				stockDetail.setQuantityReceived(totalQuantityReceived);
 				stockDetail.setDispensedQuantity(actualDispensed);
 				stockDetail.setClosingStock(actualClosing);
+				stockDetail.setItemEntryDate(itemEntryDate);
 				stockDetail.setAdjustmentIssue(adjustedQuantity_ToDate_Issue);
 				stockDetail.setAdjustmentReceipt(adjustedQuantity_ToDate_Receipt);
 				list.add(stockDetail);
@@ -402,7 +406,10 @@ public class CRMReportServiceImpl implements CRMReportService {
 					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
 					totalQuantityReceived = 0L;
 				}
-
+				Timestamp itemEntryDate = null;
+				if(objects[9]!=null) {
+					 itemEntryDate = (Timestamp) objects[9];
+				}
 				MonthlyReport stockDetail = new MonthlyReport();
 				stockDetail.setSlNo(slNo++);
 				stockDetail.setMonth(entryReport.getMonthName());
@@ -417,6 +424,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 				stockDetail.setQuantityReceived(totalQuantityReceived);
 				stockDetail.setDispensedQuantity(actualDispensed);
 				stockDetail.setClosingStock(actualClosing);
+				stockDetail.setItemEntryDate(itemEntryDate);
 				stockDetail.setAdjustmentIssue(adjustedQuantity_ToDate_Issue);
 				stockDetail.setAdjustmentReceipt(adjustedQuantity_ToDate_Receipt);
 				list.add(stockDetail);

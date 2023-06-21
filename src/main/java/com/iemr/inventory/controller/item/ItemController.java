@@ -21,7 +21,6 @@
 */
 package com.iemr.inventory.controller.item;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,8 +34,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iemr.inventory.data.drugtype.M_Drugtype;
-import com.iemr.inventory.data.facilitytype.M_facilitytype;
 import com.iemr.inventory.data.items.ItemMaster;
 import com.iemr.inventory.data.items.M_ItemCategory;
 import com.iemr.inventory.data.items.M_ItemForm;
@@ -47,7 +44,7 @@ import com.iemr.inventory.utils.response.OutputResponse;
 
 @RestController
 public class ItemController {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Autowired
@@ -61,11 +58,7 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
-
-			List<M_ItemForm> saveData= itemService.getItemFormProviderServiceMapID(providerservicemapID);
-			
+			List<M_ItemForm> saveData = itemService.getItemFormProviderServiceMapID(providerservicemapID);
 
 			response.setResponse(saveData.toString());
 
@@ -74,9 +67,6 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -88,11 +78,8 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
+			List<M_Route> saveData = itemService.getItemRouteProviderServiceMapID(providerservicemapID);
 
-			List<M_Route> saveData= itemService.getItemRouteProviderServiceMapID(providerservicemapID);
-			
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -100,9 +87,6 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -114,9 +98,6 @@ public class ItemController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
 
 			List<M_ItemCategory> saveData;
 			if (bool == 0) {
@@ -132,9 +113,6 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -146,9 +124,6 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-
 			List<ItemMaster> itemList = Arrays.asList(item);
 			List<ItemMaster> saveData = itemService.addAllItemMaster(itemList);
 
@@ -159,9 +134,6 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -173,12 +145,6 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// TODO: bool case(0): Show All case(1): Show Non Blocked item
-			// case(2): Show Non Blocked and Non Discontinued item
-
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
-
 			List<ItemMaster> saveData = itemService.getItemMaster(providerServicemapID);
 
 			response.setResponse(saveData.toString());
@@ -188,9 +154,6 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -202,12 +165,6 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// TODO: bool case(0): Show All case(1): Show Non Blocked item
-			// case(2): Show Non Blocked and Non Discontinued item
-
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
-
 			List<ItemMaster> saveData = itemService.getActiveItemMaster(providerServicemapID);
 
 			response.setResponse(saveData.toString());
@@ -217,12 +174,9 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/blockItemMaster/{itemmasterid}/{deleteflag}", headers = "Authorization", method = {
 			RequestMethod.GET }, produces = { "application/json" })
@@ -241,9 +195,6 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -265,9 +216,6 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -278,9 +226,6 @@ public class ItemController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
 
 			ItemMaster saveData = itemService.getItemMasterByID(item.getItemID());
 			saveData.setItemDesc(item.getItemDesc());
@@ -293,9 +238,6 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -307,9 +249,6 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-
 			List<M_ItemCategory> itemList = Arrays.asList(itemIssue);
 			Integer saveData = itemService.updateItemIssueConfig(itemList);
 
@@ -320,46 +259,31 @@ public class ItemController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
-	
-	
-	
-	
-		
-		@CrossOrigin()
-		@RequestMapping(value = "/getItem", headers = "Authorization", method = {RequestMethod.POST }, produces = { "application/json" })
+	@CrossOrigin()
+	@RequestMapping(value = "/getItem", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+			"application/json" })
 	public String getItem(@RequestBody String getItem) {
-			
-	      OutputResponse response = new OutputResponse();
-	      
-	try {
 
-		
-		ItemMaster item = InputMapper.gson().fromJson(getItem,ItemMaster.class);
+		OutputResponse response = new OutputResponse();
 
-		
-		List<ItemMaster> getData=itemService.getItemMasters(item.getProviderServiceMapID(),item.getItemCategoryID());
-		
-		
-		response.setResponse(getData.toString());
+		try {
 
-	} catch (Exception e) {
-		logger.error(e.getMessage());
-		response.setError(e);
+			ItemMaster item = InputMapper.gson().fromJson(getItem, ItemMaster.class);
 
+			List<ItemMaster> getData = itemService.getItemMasters(item.getProviderServiceMapID(),
+					item.getItemCategoryID());
+
+			response.setResponse(getData.toString());
+
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			response.setError(e);
+
+		}
+		return response.toString();
 	}
-	/**
-	 * sending the response...
-	 */
-	return response.toString();
-	}
-
-
-		
 
 }

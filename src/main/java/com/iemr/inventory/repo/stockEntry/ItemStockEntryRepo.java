@@ -52,11 +52,6 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 	List<ItemStockEntry> findByFacilityIDAndItemIDAndQuantityInHandGreaterThanAndDeleted(Integer facilityID,
 			Integer itemID, Integer quantityInHand, Boolean deleted);
 
-//	@Transactional
-//	@Modifying
-//	@Query("UPDATE ItemStockEntry c SET c.quantityInHand = c.quantityInHand - :quant WHERE c.itemStockEntryID = :id")
-//	Integer updateStock(@Param("id") Long id, @Param("quant") Integer quant);
-
 	@Transactional
 	@Modifying
 	@Query("UPDATE ItemStockEntry c SET c.quantityInHand = c.quantityInHand - :dispQuant "
@@ -80,8 +75,6 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 
 	List<ItemStockEntry> findByFacilityIDAndItemIDAndQuantityInHandGreaterThanAndDeletedAndExpiryDateAfter(
 			Integer facilityID, Integer itemID, Integer quantityInHand, Boolean deleted, Date date);
-
-//	List<ItemStockEntry> findByEntryTypeIDAndEntryType(Long entryID, String entryType);
 
 	List<ItemStockEntry> findByFacilityIDAndItemIDInAndQuantityInHandGreaterThanAndExpiryDateAfter(Integer facFrom,
 			Integer[] itemID, Integer quant, Date expirydate);
@@ -120,5 +113,4 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 	@Query("update ItemStockEntry p set p.vanSerialNo=p.itemStockEntryID where p.vanSerialNo is null and p.itemStockEntryID>0")
 	Integer updateItemStockEntryVanSerialNo();
 
-//	List<ItemStockEntry> findByExitTypeIDAndSyncFacilityIDAndExitType(Long vanSerialNo, Integer syncFacilityID, String string);
 }

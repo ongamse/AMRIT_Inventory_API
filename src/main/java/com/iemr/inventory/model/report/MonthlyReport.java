@@ -62,7 +62,8 @@ public class MonthlyReport {
 
 	private Long closingStock;
 	
-	private Timestamp itemEntryDate;
+	private Timestamp itemEnteredDate;
+
 
 	@Override
 	public String toString() {

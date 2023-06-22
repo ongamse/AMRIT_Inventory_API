@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.inventory.repo.stockadjustment;
 
 import java.sql.Timestamp;
@@ -19,22 +40,6 @@ public interface StockAdjustmentRepo extends CrudRepository<StockAdjustment, Lon
 
 	List<StockAdjustment> findByFacilityIDAndCreatedDateBetweenOrderByCreatedDateDesc(Integer facilityID,
 			Timestamp fromDate, Timestamp toDate);
-
-//	List<StockAdjustmentDraft> findByIsCompletedAndFacilityIDAndCreatedDateBetweenOrderByCreatedDateDesc(Boolean com,Integer facilityID,
-//			Timestamp fromDate, Timestamp toDate);
-//
-//	@Query("SELECT sad "
-//			  + " FROM StockAdjustmentDraft sad "
-//			  + " inner JOIN sad.stockAdjustmentItemDraft sadi  "
-//			  + " inner JOIN sadi.itemStockEntry ise  "
-//			  + " WHERE sad.stockAdjustmentDraftID = :id")
-//	StockAdjustmentDraft getforedit(@Param("id")Integer stockAdjustmentDraftID);
-//
-//	@Transactional
-//	@Modifying
-//	@Query("UPDATE StockAdjustmentDraft c SET c.draftDesc = :draftDesc, c.modifiedBy = :modifiedBy,c.refNo=:refNo,c.draftName=:draftName WHERE c.stockAdjustmentDraftID = :id")
-//	Integer updateStock(@Param("id") Integer id, @Param("draftDesc") String draftDesc,@Param("draftName") String draftName,
-//			@Param("refNo") String refNo,@Param("modifiedBy") String modifiedBy);
 
 	@Transactional
 	@Modifying

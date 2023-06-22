@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.inventory.service.stockadjustment;
 
 import java.sql.Timestamp;
@@ -51,7 +72,6 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public StockAdjustmentDraft saveDraft(StockAdjustmentDraft stockAdjustmentDraft) {
-		// TODO Auto-generated method stub
 
 		stockAdjustmentDraft.setIsCompleted(false);
 		List<StockAdjustmentItemDraft> itemdraft = stockAdjustmentDraft.getStockAdjustmentItemDraft();
@@ -90,7 +110,6 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 	}
 
 	public List<StockAdjustmentDraft> getStockAjustmentDraftTransaction(ItemStockEntryinput itemStockEntryinput) {
-		// TODO Auto-generated method stub
 		List<StockAdjustmentDraft> data = new ArrayList<StockAdjustmentDraft>();
 		if (itemStockEntryinput.getFacilityID() != null) {
 			if (itemStockEntryinput.getFromDate() != null) {
@@ -115,7 +134,6 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 	}
 
 	public StockAdjustmentDraft getforeditStockAjustmentDraftTransaction(Long stockAdjustmentDraftID) {
-		// TODO Auto-generated method stub
 		StockAdjustmentDraft stock = stockAdjustmentDraftRepo.getforedit(stockAdjustmentDraftID);
 		List<StockAdjustmentItemDraftEdit> s = stockAdjustmentItemDraftMapper
 				.getStockAdjustmentItemDraftEditList(stock.getStockAdjustmentItemDraft());
@@ -126,7 +144,6 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public StockAdjustment savetransaction(StockAdjustment stockAdjustment) throws InventoryException {
-		// TODO Auto-generated method stub
 		List<StockAdjustmentItem> sd = stockAdjustment.getStockAdjustmentItem();
 		stockAdjustment.setStockAdjustmentItem(null);
 
@@ -142,7 +159,6 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 		Map<Long, ItemStockEntry> result = compareobject.stream()
 				.collect(Collectors.toMap(ItemStockEntry::getItemStockEntryID, Function.identity()));
 
-		// sd.forEach(action ->{
 		for (StockAdjustmentItem action : sd) {
 			action.setSyncFacilityID(facID);
 			ItemStockEntry itemStockEntry = result.get(action.getItemStockEntryID());
@@ -180,7 +196,6 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 	}
 
 	public StockAdjustment getforeditStockAjustmentTransaction(Long stockAdjustmentID) {
-		// TODO Auto-generated method stub
 		StockAdjustment stock = stockAdjustmentRepo.findOne(stockAdjustmentID);
 		
 		stock.setStockAdjustmentItem(stockAdjustmentItemRepo.findByStockAdjustmentIDAndSyncFacilityID(stock.getVanSerialNo(),stock.getSyncFacilityID()));
@@ -193,7 +208,6 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 	}
 
 	public List<StockAdjustment> getStockAjustmentTransaction(ItemStockEntryinput itemStockEntryinput) {
-		// TODO Auto-generated method stub
 		List<StockAdjustment> data = new ArrayList<StockAdjustment>();
 		if (itemStockEntryinput.getFacilityID() != null) {
 			if (itemStockEntryinput.getFromDate() != null) {

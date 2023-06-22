@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.inventory.controller.stockExit;
 
 import java.util.List;
@@ -24,7 +45,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 public class StockExitController {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Autowired
@@ -43,10 +64,8 @@ public class StockExitController {
 			if (value == 1) {
 				output.setResponse("Successfully Created");
 			} else {
-				//output.setResponse("Error in Quantity");
 				throw new Exception("Error occured while saving the request");
 			}
-			// output.setResponse("");
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			output.setError(e);
@@ -67,40 +86,14 @@ public class StockExitController {
 			if (value == 1) {
 				output.setResponse("Successfully Created");
 			} else {
-				//output.setResponse("Error in Quantity");
 				throw new Exception("Error occured while saving the request");
 			}
-			// output.setResponse("");
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			output.setError(e);
 		}
 		return output.toString();
 	}
-
-//	@CrossOrigin()
-//	@ApiOperation(value = "Store Self Consumption", consumes = "application/json", produces = "application/json")
-//	@RequestMapping(value = "/getstoreSelfConsumption", headers = "Authorization", method = { RequestMethod.POST })
-//	public String getstoreSelfConsumption(@RequestBody StoreSelfConsumption storeSelfConsumption) {
-//
-//		OutputResponse output = new OutputResponse();
-//
-//		try {
-//
-//			Integer value = stockExitService.storeSelfConsumption(storeSelfConsumption);
-//			if (value == 1) {
-//				output.setResponse("Successfully Created");
-//			} else {
-//				//output.setResponse("Error in Quantity");
-//				throw new Exception("Error occured while saving the request");
-//			}
-//			// output.setResponse("");
-//		} catch (Exception e) {
-//
-//			output.setError(e);
-//		}
-//		return output.toString();
-//	}
 
 	@CrossOrigin()
 	@ApiOperation(value = "Store Transfer", consumes = "application/json", produces = "application/json")
@@ -115,10 +108,9 @@ public class StockExitController {
 			if (value == 1) {
 				output.setResponse("Successfully Created");
 			} else {
-				//output.setResponse("Error in Quantity");
+
 				throw new Exception("Error occured while saving the request");
 			}
-			// output.setResponse("");
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			output.setError(e);
@@ -134,7 +126,6 @@ public class StockExitController {
 		OutputResponse response = new OutputResponse();
 
 		try {
-//			ItemStockEntryinput itemStockinput = InputMapper.gson().fromJson(input, ItemStockEntryinput.class);
 			List<T_PatientIssue> getData = stockExitService.getpatientIssue(itemStockinput);
 
 			response.setResponse(getData.toString());
@@ -144,9 +135,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -158,7 +146,6 @@ public class StockExitController {
 		OutputResponse response = new OutputResponse();
 
 		try {
-//			ItemStockEntryinput itemStockinput = InputMapper.gson().fromJson(input, ItemStockEntryinput.class);
 
 			List<StoreSelfConsumption> getData = stockExitService.getstoreSelfConsumption(itemStockinput);
 
@@ -169,21 +156,17 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
 	@CrossOrigin()
 	@RequestMapping(value = "/getStoreTransfer", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getStoreTransfer(@RequestBody  ItemStockEntryinput itemStockinput) {
+	public String getStoreTransfer(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
 
 		try {
-//			ItemStockEntryinput itemStockinput = InputMapper.gson().fromJson(input, ItemStockEntryinput.class);
 			List<T_StockTransfer> getData = stockExitService.getStoreTransfer(itemStockinput);
 
 			response.setResponse(getData.toString());
@@ -193,9 +176,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -217,12 +197,9 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getPatientissueItemEntry", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
@@ -241,9 +218,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -266,9 +240,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -290,9 +261,6 @@ public class StockExitController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 }

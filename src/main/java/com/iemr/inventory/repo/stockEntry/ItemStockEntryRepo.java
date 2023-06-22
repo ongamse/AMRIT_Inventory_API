@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.inventory.repo.stockEntry;
 
 import java.util.ArrayList;
@@ -31,11 +52,6 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 	List<ItemStockEntry> findByFacilityIDAndItemIDAndQuantityInHandGreaterThanAndDeleted(Integer facilityID,
 			Integer itemID, Integer quantityInHand, Boolean deleted);
 
-//	@Transactional
-//	@Modifying
-//	@Query("UPDATE ItemStockEntry c SET c.quantityInHand = c.quantityInHand - :quant WHERE c.itemStockEntryID = :id")
-//	Integer updateStock(@Param("id") Long id, @Param("quant") Integer quant);
-
 	@Transactional
 	@Modifying
 	@Query("UPDATE ItemStockEntry c SET c.quantityInHand = c.quantityInHand - :dispQuant "
@@ -59,8 +75,6 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 
 	List<ItemStockEntry> findByFacilityIDAndItemIDAndQuantityInHandGreaterThanAndDeletedAndExpiryDateAfter(
 			Integer facilityID, Integer itemID, Integer quantityInHand, Boolean deleted, Date date);
-
-//	List<ItemStockEntry> findByEntryTypeIDAndEntryType(Long entryID, String entryType);
 
 	List<ItemStockEntry> findByFacilityIDAndItemIDInAndQuantityInHandGreaterThanAndExpiryDateAfter(Integer facFrom,
 			Integer[] itemID, Integer quant, Date expirydate);
@@ -99,5 +113,4 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 	@Query("update ItemStockEntry p set p.vanSerialNo=p.itemStockEntryID where p.vanSerialNo is null and p.itemStockEntryID>0")
 	Integer updateItemStockEntryVanSerialNo();
 
-//	List<ItemStockEntry> findByExitTypeIDAndSyncFacilityIDAndExitType(Long vanSerialNo, Integer syncFacilityID, String string);
 }

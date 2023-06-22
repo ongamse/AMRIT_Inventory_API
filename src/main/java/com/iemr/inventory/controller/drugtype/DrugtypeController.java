@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.inventory.controller.drugtype;
 
 import java.util.ArrayList;
@@ -22,29 +43,22 @@ import com.iemr.inventory.utils.response.OutputResponse;
 public class DrugtypeController {
 	@Autowired
 	private DrugtypeInter drugtypeInter;
-	
-	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-	
-	
-	@CrossOrigin()
-	@RequestMapping(value =  "/createDrugtype" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
-	public String createManufacturer(@RequestBody String createDrugtype) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
-		
-		
-		      OutputResponse response = new OutputResponse();
-		try {
-			
 
-			M_Drugtype[] Drugtype = InputMapper.gson().fromJson(createDrugtype,
-					M_Drugtype[].class);
-		      List<M_Drugtype> DrugtypeData = Arrays.asList(Drugtype);
-			
-			ArrayList<M_Drugtype> saveData=drugtypeInter.createDrugtypeData(DrugtypeData);
-			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
-			
+	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+
+	@CrossOrigin()
+	@RequestMapping(value = "/createDrugtype", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+			"application/json" })
+	public String createManufacturer(@RequestBody String createDrugtype) {
+
+		OutputResponse response = new OutputResponse();
+		try {
+
+			M_Drugtype[] Drugtype = InputMapper.gson().fromJson(createDrugtype, M_Drugtype[].class);
+			List<M_Drugtype> DrugtypeData = Arrays.asList(Drugtype);
+
+			ArrayList<M_Drugtype> saveData = drugtypeInter.createDrugtypeData(DrugtypeData);
+
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -52,33 +66,23 @@ public class DrugtypeController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
-	
-	
-	
+
 	@CrossOrigin()
-	@RequestMapping(value =  "/getDrugtype",headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
+	@RequestMapping(value = "/getDrugtype", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+			"application/json" })
 	public String getManufacturer(@RequestBody String getDrugtype) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
-		
+
 		OutputResponse response = new OutputResponse();
 
 		try {
 
-			M_Drugtype Drugtype = InputMapper.gson().fromJson(getDrugtype,
-					M_Drugtype.class);
-		      //List<M_Drugtype> DrugtypeData = Arrays.asList(Drugtype);
-			
-			ArrayList<M_Drugtype> getedData=drugtypeInter.getDrugtypeData(Drugtype.getProviderServiceMapID());
-			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
-			
+			M_Drugtype Drugtype = InputMapper.gson().fromJson(getDrugtype, M_Drugtype.class);
+
+			ArrayList<M_Drugtype> getedData = drugtypeInter.getDrugtypeData(Drugtype.getProviderServiceMapID());
+
 			response.setResponse(getedData.toString());
 
 		} catch (Exception e) {
@@ -86,43 +90,31 @@ public class DrugtypeController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
 
-	
-	
-	
-	
-	
 	@CrossOrigin()
-	@RequestMapping(value =  "/editDrugtype" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
+	@RequestMapping(value = "/editDrugtype", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+			"application/json" })
 	public String editManufacturer(@RequestBody String editDrugtype) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
-		
+
 		OutputResponse response = new OutputResponse();
 
 		try {
 
-			M_Drugtype Drugtype = InputMapper.gson().fromJson(editDrugtype,
-					M_Drugtype.class);
-		      //List<M_Drugtype> DrugtypeData = Arrays.asList(Drugtype);
-			
-			M_Drugtype geteditedData=drugtypeInter.editDrugtypeData(Drugtype.getDrugTypeID());
-			 
+			M_Drugtype Drugtype = InputMapper.gson().fromJson(editDrugtype, M_Drugtype.class);
+
+			M_Drugtype geteditedData = drugtypeInter.editDrugtypeData(Drugtype.getDrugTypeID());
+
 			geteditedData.setDrugTypeName(Drugtype.getDrugTypeName());
 			geteditedData.setDrugTypeDesc(Drugtype.getDrugTypeDesc());
 			geteditedData.setDrugTypeCode(Drugtype.getDrugTypeCode());
 			geteditedData.setStatus(Drugtype.getStatus());
 			geteditedData.setModifiedBy(Drugtype.getModifiedBy());
-			
-			M_Drugtype saveeditedData=drugtypeInter.saveeditDrugtype(geteditedData);
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
-			
+
+			M_Drugtype saveeditedData = drugtypeInter.saveeditDrugtype(geteditedData);
+
 			response.setResponse(saveeditedData.toString());
 
 		} catch (Exception e) {
@@ -130,39 +122,27 @@ public class DrugtypeController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
 
-	
-	
-	
-	
-	
 	@CrossOrigin()
-	@RequestMapping(value =  "/deleteDrugtype" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
+	@RequestMapping(value = "/deleteDrugtype", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+			"application/json" })
 	public String deleteManufacturer(@RequestBody String deleteDrugtype) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
-		
+
 		OutputResponse response = new OutputResponse();
 
 		try {
 
-			M_Drugtype Drugtype = InputMapper.gson().fromJson(deleteDrugtype,
-					M_Drugtype.class);
-		      //List<M_Drugtype> DrugtypeData = Arrays.asList(Drugtype);
-			
-			M_Drugtype geteditedData=drugtypeInter.editDrugtypeData(Drugtype.getDrugTypeID());
-			 
+			M_Drugtype Drugtype = InputMapper.gson().fromJson(deleteDrugtype, M_Drugtype.class);
+
+			M_Drugtype geteditedData = drugtypeInter.editDrugtypeData(Drugtype.getDrugTypeID());
+
 			geteditedData.setDeleted(Drugtype.getDeleted());
-			
-			M_Drugtype deletedData=drugtypeInter.saveeditDrugtype(geteditedData);
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
-			
+
+			M_Drugtype deletedData = drugtypeInter.saveeditDrugtype(geteditedData);
+
 			response.setResponse(deletedData.toString());
 
 		} catch (Exception e) {
@@ -170,13 +150,8 @@ public class DrugtypeController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
-
-	
 
 }

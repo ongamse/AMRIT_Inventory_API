@@ -1,3 +1,24 @@
+/*
+* AMRIT – Accessible Medical Records via Integrated Technology 
+* Integrated EHR (Electronic Health Records) Solution 
+*
+* Copyright (C) "Piramal Swasthya Management and Research Institute" 
+*
+* This file is part of AMRIT.
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see https://www.gnu.org/licenses/.
+*/
 package com.iemr.inventory.config;
 
 import javax.persistence.EntityManagerFactory;
@@ -7,7 +28,6 @@ import org.apache.tomcat.jdbc.pool.PoolConfiguration;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
@@ -20,7 +40,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.iemr.inventory.utils.CryptoUtil;
 import com.iemr.inventory.utils.config.ConfigProperties;
 
 @Configuration
@@ -30,9 +49,6 @@ import com.iemr.inventory.utils.config.ConfigProperties;
 
 public class DBConfig {
 	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-
-	@Autowired
-	private CryptoUtil cryptoUtil;
 
 	@Primary
 	@Bean(name = "dataSource")
@@ -52,17 +68,17 @@ public class DBConfig {
 		p.setValidationQuery("SELECT 1");
 		org.apache.tomcat.jdbc.pool.DataSource datasource = new org.apache.tomcat.jdbc.pool.DataSource();
 		datasource.setPoolProperties(p);
-		datasource.setUsername(cryptoUtil.decrypt(ConfigProperties.getPropertyByName("encDbUserName")));
-		datasource.setPassword(cryptoUtil.decrypt(ConfigProperties.getPropertyByName("encDbPass")));
+		datasource.setUsername(ConfigProperties.getPropertyByName("encDbUserName"));
+		datasource.setPassword(ConfigProperties.getPropertyByName("encDbPass"));
 		return datasource;
 	}
 
-	@Primary
-	@Bean(name = "entityManagerFactory")
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,
-			@Qualifier("dataSource") DataSource dataSource) {
-		return builder.dataSource(dataSource).packages("com.iemr.inventory.*").persistenceUnit("db_iemr").build();
-	}
+//	@Primary
+//	@Bean(name = "entityManagerFactory")
+//	public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder,
+//			@Qualifier("dataSource") DataSource dataSource) {
+//		return builder.dataSource(dataSource).packages("com.iemr.inventory.*").persistenceUnit("db_iemr").build();
+//	}
 
 	@Primary
 	@Bean(name = "transactionManager")

@@ -48,7 +48,6 @@ public class OutputResponse {
 	public static final int ENVIRONMENT_EXCEPTION = 5006;
 	public static final int PARSE_EXCEPTION = 5007;
 	public static final int Inventory_FAILURE = 5010;
-	
 
 	@Expose
 	private int statusCode = GENERIC_FAILURE;
@@ -70,7 +69,6 @@ public class OutputResponse {
 				this.data = obj;
 			} else {
 				this.data = new JsonParser().parse(RESPONSE.replace(RESPONSE_VALUE, message));
-				// this.data = message;
 			}
 		} catch (Exception exe) {
 			this.data = message;
@@ -149,9 +147,6 @@ public class OutputResponse {
 		return (this.statusCode == SUCCESS);
 	}
 
-	/**
-	 * @return the data
-	 */
 	public String getData() {
 		JSONObject obj = new JSONObject(toString());
 		if (obj.has("data")) {
@@ -161,41 +156,23 @@ public class OutputResponse {
 		}
 	}
 
-	/**
-	 * @return the statusCode
-	 */
 	public int getStatusCode() {
 		return statusCode;
 	}
 
-	/**
-	 * @return the errorMessage
-	 */
 	public String getErrorMessage() {
 		return errorMessage;
 	}
 
-	/**
-	 * @return the status
-	 */
 	public String getStatus() {
 		return status;
 	}
 
 	@Override
 	public String toString() {
-		// return new Gson().toJson(this);
-		// Gson gson = OutputMapper.gson();
 		GsonBuilder builder = new GsonBuilder();
 		builder.excludeFieldsWithoutExposeAnnotation();
-		// builder.disableInnerClassSerialization();
 		return builder.create().toJson(this);
-		// JSONObject response = new JSONObject();
-		// response.put("data", data);
-		// response.put("statusCode", statusCode);
-		// response.put("status", status);
-		// response.put("errorMessage", errorMessage);
-		// return response.toString();
 	}
 
 	public String toStringWithSerialization() {
@@ -205,9 +182,4 @@ public class OutputResponse {
 		return builder.create().toJson(this);
 	}
 
-	// public static void main(String[] args) {
-	// OutputResponse resp = new OutputResponse();
-	// resp.setResponse("{testing: [test]}");
-	// System.out.println(resp.toString());
-	// }
 }

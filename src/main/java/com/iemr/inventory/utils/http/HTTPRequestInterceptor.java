@@ -37,23 +37,20 @@ import com.iemr.inventory.utils.sessionobject.SessionObject;
 import com.iemr.inventory.utils.validator.Validator;
 
 @Component
-public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
-{
+public class HTTPRequestInterceptor extends HandlerInterceptorAdapter {
 	private Validator validator;
 
 	Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 	@Autowired
-	public void setValidator(Validator validator)
-	{
+	public void setValidator(Validator validator) {
 		this.validator = validator;
 	}
 
 	private SessionObject sessionObject;
 
 	@Autowired
-	public void setSessionObject(SessionObject sessionObject)
-	{
+	public void setSessionObject(SessionObject sessionObject) {
 		this.sessionObject = sessionObject;
 	}
 
@@ -62,46 +59,39 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception
 
 	{
-//		if(true){
-//			return true;
-//		}
 		boolean status = true;
 		logger.debug("In preHandle we are Intercepting the Request");
 		String authorization = request.getHeader("Authorization");
 		logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization
 				+ " || method :: " + request.getMethod());
-		if (!request.getMethod().equalsIgnoreCase("OPTIONS"))
-		{
-			try
-			{
+		if (!request.getMethod().equalsIgnoreCase("OPTIONS")) {
+			try {
 				String[] requestURIParts = request.getRequestURI().split("/");
 				String requestAPI = requestURIParts[requestURIParts.length - 1];
-				switch (requestAPI)
-				{
-					case "userAuthenticate":
-					case "userAuthenticateNew":
-					case "userAuthenticateV1":
-					case "forgetPassword":
-					case "setForgetPassword":
-					case "changePassword":
-					case "saveUserSecurityQuesAns":
-					case "swagger-ui.html":
-					case "ui":
-					case "swagger-resources":
-					case "version":
-					case "api-docs":
-						break;
-					case "error":
-						status = false;
-						break;
-					default:
-						String remoteAddress = request.getHeader("X-FORWARDED-FOR");
-						if (remoteAddress == null || remoteAddress.trim().length() == 0)
-						{
-							remoteAddress = request.getRemoteAddr();
-						}
-						validator.checkKeyExists(authorization, remoteAddress);
-						break;
+				switch (requestAPI) {
+				case "userAuthenticate":
+				case "userAuthenticateNew":
+				case "userAuthenticateV1":
+				case "forgetPassword":
+				case "setForgetPassword":
+				case "changePassword":
+				case "saveUserSecurityQuesAns":
+				case "swagger-ui.html":
+				case "ui":
+				case "swagger-resources":
+				case "version":
+				case "api-docs":
+					break;
+				case "error":
+					status = false;
+					break;
+				default:
+					String remoteAddress = request.getHeader("X-FORWARDED-FOR");
+					if (remoteAddress == null || remoteAddress.trim().length() == 0) {
+						remoteAddress = request.getRemoteAddr();
+					}
+					validator.checkKeyExists(authorization, remoteAddress);
+					break;
 				}
 
 			} catch (Exception e)
@@ -137,7 +127,6 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 			String authorization = request.getHeader("Authorization");
 
 			logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization);
-			
 
 			if (authorization != null)
 
@@ -159,8 +148,7 @@ public class HTTPRequestInterceptor extends HandlerInterceptorAdapter
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object object, Exception arg3)
-			throws Exception
-	{
+			throws Exception {
 		logger.debug("In afterCompletion Request Completed");
 	}
 }

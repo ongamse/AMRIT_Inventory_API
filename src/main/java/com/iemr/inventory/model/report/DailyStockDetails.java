@@ -59,8 +59,9 @@ public class DailyStockDetails {
 	private Long adjustmentIssue;
 
 	private Long closingStock;
-	
+
 	private Timestamp itemEnteredDate;
+
 
 	@Override
 	public String toString() {

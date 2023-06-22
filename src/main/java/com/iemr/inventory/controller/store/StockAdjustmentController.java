@@ -41,7 +41,7 @@ import com.iemr.inventory.utils.response.OutputResponse;
 
 @RestController
 public class StockAdjustmentController {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Autowired
@@ -50,21 +50,16 @@ public class StockAdjustmentController {
 	@CrossOrigin()
 	@RequestMapping(value = "/stockadjustmentdraft", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String stockadjustmentdraft( @RequestBody String store) {
+	public String stockadjustmentdraft(@RequestBody String store) {
 
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
 			String saveData = "Invalid Store Type";
 
-
-			
 			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
+
 			saveData = stockAdjustmentServiceImpl.saveDraft(stockAdjustmentDraft).toString();
-			
 
 			response.setResponse(saveData);
 
@@ -73,30 +68,19 @@ public class StockAdjustmentController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getstockadjustmentdraftTransaction", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getstockadjustmentdraftTransaction( @RequestBody ItemStockEntryinput itemStockinput) {
+	public String getstockadjustmentdraftTransaction(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
-
-			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
-			List<StockAdjustmentDraft> saveData = stockAdjustmentServiceImpl.getStockAjustmentDraftTransaction(itemStockinput);
-//			
-//
+			List<StockAdjustmentDraft> saveData = stockAdjustmentServiceImpl
+					.getStockAjustmentDraftTransaction(itemStockinput);
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -104,31 +88,19 @@ public class StockAdjustmentController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getforEditsStockAdjustmentdraftTransaction", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getforEditsSockAdjustmentdraftTransaction( @RequestBody ItemStockEntryinput itemStockinput) {
+	public String getforEditsSockAdjustmentdraftTransaction(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
-
-			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
-			StockAdjustmentDraft saveData = stockAdjustmentServiceImpl.getforeditStockAjustmentDraftTransaction(itemStockinput.getStockAdjustmentDraftID());
-//			
-//
+			StockAdjustmentDraft saveData = stockAdjustmentServiceImpl
+					.getforeditStockAjustmentDraftTransaction(itemStockinput.getStockAdjustmentDraftID());
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -136,30 +108,20 @@ public class StockAdjustmentController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
-	@RequestMapping(value = "/stockadjustment", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
-	public String stockadjustment( @RequestBody StockAdjustment StockAdjustment) {
+	@RequestMapping(value = "/stockadjustment", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+			"application/json" })
+	public String stockadjustment(@RequestBody StockAdjustment StockAdjustment) {
 
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
 			String saveData = "Invalid Store Type";
 
-
-			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
 			saveData = stockAdjustmentServiceImpl.savetransaction(StockAdjustment).toString();
-			
 
 			response.setResponse(saveData);
 
@@ -168,31 +130,18 @@ public class StockAdjustmentController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getStockAdjustmentTransaction", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getforeditStockAdjustmentTransaction( @RequestBody ItemStockEntryinput itemStockinput) {
+	public String getforeditStockAdjustmentTransaction(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
-
-			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
 			List<StockAdjustment> saveData = stockAdjustmentServiceImpl.getStockAjustmentTransaction(itemStockinput);
-//			
-//
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -200,31 +149,19 @@ public class StockAdjustmentController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
 	@RequestMapping(value = "/getforEditsStockAdjustmentTransaction", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getforEditsStockAdjustmentTransaction( @RequestBody ItemStockEntryinput itemStockinput) {
+	public String getforEditsStockAdjustmentTransaction(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
-
-			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
-			StockAdjustment saveData = stockAdjustmentServiceImpl.getforeditStockAjustmentTransaction(itemStockinput.getStockAdjustmentID());
-//			
-//
+			StockAdjustment saveData = stockAdjustmentServiceImpl
+					.getforeditStockAjustmentTransaction(itemStockinput.getStockAdjustmentID());
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -232,9 +169,6 @@ public class StockAdjustmentController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 }

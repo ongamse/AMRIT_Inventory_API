@@ -48,7 +48,7 @@ import com.iemr.inventory.utils.response.OutputResponse;
 
 @RestController
 public class M_itemfacilitymappingController {
-	
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Autowired
@@ -58,7 +58,6 @@ public class M_itemfacilitymappingController {
 	@RequestMapping(value = "/mapItemtoStrore", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String mapItemtoStrore(@RequestBody String mapItemtoStrore) {
-		// JSONObject requestOBJ = new JSONObject(providerBlocking);
 		OutputResponse response = new OutputResponse();
 
 		try {
@@ -94,7 +93,6 @@ public class M_itemfacilitymappingController {
 
 					resList.add(resDataMap);
 				}
-				// itemDetailsIndex++;
 
 			}
 
@@ -107,9 +105,6 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
@@ -118,7 +113,6 @@ public class M_itemfacilitymappingController {
 	@RequestMapping(value = "/editItemtoStrore", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String editItemtoStrore(@RequestBody String editItemtoStrore) {
-		// JSONObject requestOBJ = new JSONObject(providerBlocking);
 		OutputResponse response = new OutputResponse();
 
 		try {
@@ -143,9 +137,6 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
@@ -154,7 +145,6 @@ public class M_itemfacilitymappingController {
 	@RequestMapping(value = "/deleteItemtoStrore", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String deleteItemtoStrore(@RequestBody String deleteItemtoStrore) {
-		// JSONObject requestOBJ = new JSONObject(providerBlocking);
 		OutputResponse response = new OutputResponse();
 
 		try {
@@ -175,9 +165,6 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
@@ -186,7 +173,6 @@ public class M_itemfacilitymappingController {
 	@RequestMapping(value = "/getSubStoreitem", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String getSubStroreitem(@RequestBody String deleteItemtoStrore) {
-		// JSONObject requestOBJ = new JSONObject(providerBlocking);
 		OutputResponse response = new OutputResponse();
 
 		try {
@@ -197,11 +183,6 @@ public class M_itemfacilitymappingController {
 			ArrayList<M_itemfacilitymapping> getsubstoreData = M_itemfacilitymappingInter
 					.getsubitemforsubStote(itemDetails.getProviderServiceMapID(), itemDetails.getFacilityID());
 
-			// getdataforedit.setDeleted(itemDetails.getDeleted());
-
-			/// M_itemfacilitymapping data =
-			/// M_itemfacilitymappingInter.saveEditedItem(getdataforedit);
-
 			response.setResponse(getsubstoreData.toString());
 
 		} catch (Exception e) {
@@ -209,9 +190,6 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
@@ -220,7 +198,6 @@ public class M_itemfacilitymappingController {
 	@RequestMapping(value = "/getAllFacilityMappedData", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getAllFacilityMappedData(@RequestBody String getAllFacilityMappedData) {
-		// JSONObject requestOBJ = new JSONObject(providerBlocking);
 		OutputResponse response = new OutputResponse();
 
 		try {
@@ -231,11 +208,6 @@ public class M_itemfacilitymappingController {
 			ArrayList<V_fetchItemFacilityMap> getAllMappedData = M_itemfacilitymappingInter
 					.getAllFacilityMappedData(itemDetails.getProviderServiceMapID());
 
-			// getdataforedit.setDeleted(itemDetails.getDeleted());
-
-			/// M_itemfacilitymapping data =
-			/// M_itemfacilitymappingInter.saveEditedItem(getdataforedit);
-
 			response.setResponse(getAllMappedData.toString());
 
 		} catch (Exception e) {
@@ -243,9 +215,6 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 
 	}
@@ -268,14 +237,9 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
-	
-	// this method is fetch all the mapped items the store can trade with with partial itemname search
 	@CrossOrigin()
 	@RequestMapping(value = "/itemPartialSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
@@ -285,7 +249,8 @@ public class M_itemfacilitymappingController {
 
 		try {
 
-			List<ItemMaster> getData = M_itemfacilitymappingInter.getItemMastersPartialSearch(getItem.getItemName(),getItem.getFacilityID());
+			List<ItemMaster> getData = M_itemfacilitymappingInter.getItemMastersPartialSearch(getItem.getItemName(),
+					getItem.getFacilityID());
 
 			response.setResponse(getData.toString());
 
@@ -294,9 +259,6 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 
@@ -309,7 +271,8 @@ public class M_itemfacilitymappingController {
 
 		try {
 
-			List<ItemStockEntry> getData = M_itemfacilitymappingInter.getItemBatchForStoreTransfer(stores.getTransferFromFacilityID(),stores.getTransferToFacilityID(),stores.getItemName());
+			List<ItemStockEntry> getData = M_itemfacilitymappingInter.getItemBatchForStoreTransfer(
+					stores.getTransferFromFacilityID(), stores.getTransferToFacilityID(), stores.getItemName());
 
 			response.setResponse(getData.toString());
 
@@ -318,9 +281,6 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 }

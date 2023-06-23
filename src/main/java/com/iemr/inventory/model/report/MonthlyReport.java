@@ -22,6 +22,7 @@
 package com.iemr.inventory.model.report;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.LongSerializationPolicy;
@@ -60,6 +61,9 @@ public class MonthlyReport {
 	private Long adjustmentIssue;
 
 	private Long closingStock;
+	
+	private Timestamp itemEnteredDate;
+
 
 	@Override
 	public String toString() {

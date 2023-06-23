@@ -39,14 +39,6 @@ import com.iemr.inventory.data.stockadjustment.StockAdjustmentItemDraft;
 @RestResource(exported = false)
 public interface StockAdjustmentItemRepo extends CrudRepository<StockAdjustmentItem, Integer> {
 
-//
-//	@Query(" SELECT sadi "
-//			  + " FROM StockAdjustmentItemDraft sadi  "
-//			  + " JOIN sadi.itemStockEntry ise "
-//			  + " WHERE sadi.sADraftItemMapID =:id")
-//	StockAdjustmentItemDraft getforedit(@Param("id")Integer id);
-
-
 	@Transactional
 	@Modifying
 	@Query("update StockAdjustmentItem p set p.vanSerialNo=p.sAItemMapID where p.vanSerialNo is null and p.sAItemMapID>0")

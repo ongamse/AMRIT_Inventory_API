@@ -60,6 +60,9 @@ public class DailyStockDetails {
 
 	private Long closingStock;
 
+	private Timestamp itemEnteredDate;
+
+
 	@Override
 	public String toString() {
 

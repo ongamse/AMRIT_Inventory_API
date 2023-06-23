@@ -34,7 +34,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.iemr.inventory.data.employeemaster.M_UserServiceRoleMapping2;
 import com.iemr.inventory.data.supplier.M_Supplier;
 import com.iemr.inventory.data.supplier.M_Supplieraddress;
 import com.iemr.inventory.service.supplier.SupplierInter;
@@ -94,7 +93,6 @@ public class SupplierMaster_Controller {
 			response.setError(e);
 
 		}
-
 		return response.toString();
 
 	}

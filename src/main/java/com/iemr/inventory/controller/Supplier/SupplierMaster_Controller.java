@@ -156,7 +156,6 @@ public class SupplierMaster_Controller {
 
 		}
 		return response.toString();
-
 	}
 
 	@CrossOrigin()

@@ -71,7 +71,6 @@ public class PharmacologicalcategoryController {
 
 		}
 		return response.toString();
-
 	}
 
 	@CrossOrigin()
@@ -97,7 +96,6 @@ public class PharmacologicalcategoryController {
 
 		}
 		return response.toString();
-
 	}
 
 	@CrossOrigin()

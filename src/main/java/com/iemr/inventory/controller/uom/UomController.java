@@ -69,7 +69,6 @@ public class UomController {
 
 		}
 		return response.toString();
-
 	}
 
 	@CrossOrigin()

@@ -68,7 +68,6 @@ public class ManufacturerController {
 
 		}
 		return response.toString();
-
 	}
 
 	@CrossOrigin()
@@ -152,10 +151,10 @@ public class ManufacturerController {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
-
 		}
-		return response.toString();
 
+
+		return response.toString();
 	}
 
 }

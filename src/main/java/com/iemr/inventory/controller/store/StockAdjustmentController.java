@@ -101,8 +101,8 @@ public class StockAdjustmentController {
 
 			StockAdjustmentDraft saveData = stockAdjustmentServiceImpl
 					.getforeditStockAjustmentDraftTransaction(itemStockinput.getStockAdjustmentDraftID());
-			response.setResponse(saveData.toString());
 
+			response.setResponse(saveData.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
@@ -142,6 +142,7 @@ public class StockAdjustmentController {
 		try {
 
 			List<StockAdjustment> saveData = stockAdjustmentServiceImpl.getStockAjustmentTransaction(itemStockinput);
+
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -162,12 +163,12 @@ public class StockAdjustmentController {
 
 			StockAdjustment saveData = stockAdjustmentServiceImpl
 					.getforeditStockAjustmentTransaction(itemStockinput.getStockAdjustmentID());
+
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
-
 		}
 		return response.toString();
 	}

@@ -68,9 +68,7 @@ public class UomController {
 			response.setError(e);
 
 		}
-
 		return response.toString();
-
 	}
 
 	@CrossOrigin()

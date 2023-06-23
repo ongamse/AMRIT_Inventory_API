@@ -157,9 +157,7 @@ public class SupplierMaster_Controller {
 			response.setError(e);
 
 		}
-
 		return response.toString();
-
 	}
 
 	@CrossOrigin()

@@ -70,9 +70,7 @@ public class PharmacologicalcategoryController {
 			response.setError(e);
 
 		}
-
 		return response.toString();
-
 	}
 
 	@CrossOrigin()
@@ -97,9 +95,7 @@ public class PharmacologicalcategoryController {
 			response.setError(e);
 
 		}
-
 		return response.toString();
-
 	}
 
 	@CrossOrigin()

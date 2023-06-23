@@ -268,7 +268,6 @@ public class ItemController {
 	public String getItem(@RequestBody String getItem) {
 
 		OutputResponse response = new OutputResponse();
-
 		try {
 
 			ItemMaster item = InputMapper.gson().fromJson(getItem, ItemMaster.class);
@@ -286,5 +285,4 @@ public class ItemController {
 
 		return response.toString();
 	}
-
 }

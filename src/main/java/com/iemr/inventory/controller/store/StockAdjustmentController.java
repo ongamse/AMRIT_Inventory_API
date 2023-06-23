@@ -103,7 +103,6 @@ public class StockAdjustmentController {
 					.getforeditStockAjustmentDraftTransaction(itemStockinput.getStockAdjustmentDraftID());
 
 			response.setResponse(saveData.toString());
-
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
@@ -170,7 +169,6 @@ public class StockAdjustmentController {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
-
 		}
 		return response.toString();
 	}

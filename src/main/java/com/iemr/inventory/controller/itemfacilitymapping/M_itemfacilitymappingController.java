@@ -105,9 +105,7 @@ public class M_itemfacilitymappingController {
 			response.setError(e);
 
 		}
-
 		return response.toString();
-
 	}
 
 	@CrossOrigin()

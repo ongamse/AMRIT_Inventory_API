@@ -50,7 +50,7 @@ public class PharmacologicalcategoryController {
 	private PharmacologicalcategoryInter pharmacologicalcategoryInter;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create pharmacologicalcategory", consumes = "application/json", produces = "application/json")
+	@ApiOperation(value = "Create pharmacological category", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/createPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String createPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
@@ -77,7 +77,7 @@ public class PharmacologicalcategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get pharmacologicalcategory", consumes = "application/json", produces = "application/json")
+	@ApiOperation(value = "Get pharmacological category", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
@@ -103,7 +103,7 @@ public class PharmacologicalcategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Edit pharmacologicalcategory", consumes = "application/json", produces = "application/json")
+	@ApiOperation(value = "Edit pharmacological category", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/editPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String editPharmacologicalcategory(@RequestBody String editPharmacologicalcategory) {
@@ -134,7 +134,7 @@ public class PharmacologicalcategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete pharmacologicalcategory", consumes = "application/json", produces = "application/json")
+	@ApiOperation(value = "Delete pharmacological category", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/deletePharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String deletePharmacologicalcategory(@RequestBody String deletePharmacologicalcategory) {

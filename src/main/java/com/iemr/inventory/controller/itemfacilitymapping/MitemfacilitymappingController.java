@@ -49,7 +49,7 @@ import com.iemr.inventory.utils.response.OutputResponse;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-public class M_itemfacilitymappingController {
+public class MitemfacilitymappingController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 

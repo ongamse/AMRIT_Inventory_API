@@ -40,8 +40,10 @@ import com.iemr.inventory.service.supplier.SupplierInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
-public class SupplierMaster_Controller {
+public class SupplierMasterController {
 
 	@Autowired
 	private SupplierInter supplierInter;
@@ -49,6 +51,7 @@ public class SupplierMaster_Controller {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
+	@ApiOperation(value = "Create supplier", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/createSupplier", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String createSupplier(@RequestBody String createSupplier) {
@@ -98,6 +101,7 @@ public class SupplierMaster_Controller {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get supplier", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getSupplier", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String getSupplier(@RequestBody String getSupplier) {
@@ -122,6 +126,7 @@ public class SupplierMaster_Controller {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Edit supplier", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/editSupplier", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String editSupplier(@RequestBody String editSupplier) {
@@ -159,6 +164,7 @@ public class SupplierMaster_Controller {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Delete supplier", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/deleteSupplier", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String deleteSupplier(@RequestBody String deleteSupplier) {

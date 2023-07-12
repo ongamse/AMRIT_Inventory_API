@@ -39,6 +39,8 @@ import com.iemr.inventory.service.manufacturer.ManufacturerInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 public class ManufacturerController {
 	@Autowired
@@ -47,6 +49,7 @@ public class ManufacturerController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
+	@ApiOperation(value = "Create manufacturer", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/createManufacturer", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String createManufacturer(@RequestBody String createManufacturer) {
@@ -71,6 +74,7 @@ public class ManufacturerController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get manufacturer", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getManufacturer", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String getManufacturer(@RequestBody String getManufacturer) {
@@ -96,6 +100,7 @@ public class ManufacturerController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Edit manufacturer", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/editManufacturer", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String editManufacturer(@RequestBody String editManufacturer) {
@@ -130,6 +135,7 @@ public class ManufacturerController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Delete manufacturer", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/deleteManufacturer", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String deleteManufacturer(@RequestBody String deleteManufacturer) {
@@ -152,7 +158,6 @@ public class ManufacturerController {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-
 
 		return response.toString();
 	}

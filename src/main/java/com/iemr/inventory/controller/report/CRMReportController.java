@@ -37,243 +37,214 @@ import com.iemr.inventory.service.report.CRMReportService;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RequestMapping("/crmReportController")
 @RestController
 public class CRMReportController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
-	
+
 	@Autowired
 	CRMReportService crmReportService;
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get inward stock report", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getInwardStockReport", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getInwardStockReport(@RequestBody String request)
-	{
-		logger.info("getInwardStockReport request "+request.toString());
+	public String getInwardStockReport(@RequestBody String request) {
+		logger.info("getInwardStockReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockEntryReport report= InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
-			String res= crmReportService.getInwardStockReport(report);
+
+			ItemStockEntryReport report = InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
+			String res = crmReportService.getInwardStockReport(report);
 			response.setResponse(res);
-			logger.info("getInwardStockReport response "+response.toString());
+			logger.info("getInwardStockReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
-	@RequestMapping(value = "/getExpiryReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
-	public String getExpiryReport(@RequestBody String request)
-	{
-		logger.info("getExpiryReport request "+request.toString());
+	@ApiOperation(value = "Get expiry report", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/getExpiryReport", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+			"application/json" })
+	public String getExpiryReport(@RequestBody String request) {
+		logger.info("getExpiryReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockEntryReport report= InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
-			String res= crmReportService.getExpiryReport(report);
+
+			ItemStockEntryReport report = InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
+			String res = crmReportService.getExpiryReport(report);
 			response.setResponse(res);
-			logger.info("getExpiryReport response "+response.toString());
+			logger.info("getExpiryReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get consumption report", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getConsumptionReport", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getConsumptionReport(@RequestBody String request)
-	{
-		logger.info("getConsumptionReport request "+request.toString());
+	public String getConsumptionReport(@RequestBody String request) {
+		logger.info("getConsumptionReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockExitReport report= InputMapper.gson().fromJson(request, ItemStockExitReport.class);
-			String res= crmReportService.getConsumptionReport(report);
+
+			ItemStockExitReport report = InputMapper.gson().fromJson(request, ItemStockExitReport.class);
+			String res = crmReportService.getConsumptionReport(report);
 			response.setResponse(res);
-			logger.info("getConsumptionReport response "+response.toString());
+			logger.info("getConsumptionReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get benificiary drug issue report", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getBenDrugIssueReport", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getBenDrugIssueReport(@RequestBody String request)
-	{
-		logger.info("getBenDrugIssueReport request "+request.toString());
+	public String getBenDrugIssueReport(@RequestBody String request) {
+		logger.info("getBenDrugIssueReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			PatientIssueExitReport report= InputMapper.gson().fromJson(request, PatientIssueExitReport.class);
-			String res= crmReportService.getBenDrugIssueReport(report);
+
+			PatientIssueExitReport report = InputMapper.gson().fromJson(request, PatientIssueExitReport.class);
+			String res = crmReportService.getBenDrugIssueReport(report);
 			response.setResponse(res);
-			logger.info("getBenDrugIssueReport response "+response.toString());
+			logger.info("getBenDrugIssueReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get daily stock detail report", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getDailyStockDetailReport", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getDailyStockDetailReport(@RequestBody String request)
-	{
-		logger.info("getDailyStockDetailReport request "+request.toString());
+	public String getDailyStockDetailReport(@RequestBody String request) {
+		logger.info("getDailyStockDetailReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockEntryReport report= InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
-			String res= crmReportService.getDailyStockDetailsReport(report);
+
+			ItemStockEntryReport report = InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
+			String res = crmReportService.getDailyStockDetailsReport(report);
 			response.setResponse(res);
-			logger.info("getDailyStockDetailReport response "+response.toString());
+			logger.info("getDailyStockDetailReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get daily stock summary report", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getDailyStockSummaryReport", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getDailyStockSummaryReport(@RequestBody String request)
-	{
-		logger.info("getDailyStockSummaryReport request "+request.toString());
+	public String getDailyStockSummaryReport(@RequestBody String request) {
+		logger.info("getDailyStockSummaryReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockEntryReport report= InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
-			String res= crmReportService.getDailyStockSummaryReport(report);
+
+			ItemStockEntryReport report = InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
+			String res = crmReportService.getDailyStockSummaryReport(report);
 			response.setResponse(res);
-			logger.info("getDailyStockSummaryReport response "+response.toString());
+			logger.info("getDailyStockSummaryReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get monthly report", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getMonthlyReport", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getMonthlyReport(@RequestBody String request)
-	{
-		logger.info("getMonthlyReport request "+request.toString());
+	public String getMonthlyReport(@RequestBody String request) {
+		logger.info("getMonthlyReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockEntryReport report= InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
-			String res= crmReportService.getMonthlyReport(report);
+
+			ItemStockEntryReport report = InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
+			String res = crmReportService.getMonthlyReport(report);
 			response.setResponse(res);
-			logger.info("getMonthlyReport response "+response.toString());
+			logger.info("getMonthlyReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
-	@RequestMapping(value = "/getYearlyReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
-	public String getYearlyReport(@RequestBody String request)
-	{
-		logger.info("getYearlyReport request "+request.toString());
+	@ApiOperation(value = "Get yearly report", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value = "/getYearlyReport", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+			"application/json" })
+	public String getYearlyReport(@RequestBody String request) {
+		logger.info("getYearlyReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockEntryReport report= InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
-			String res= crmReportService.getYearlyReport(report);
+
+			ItemStockEntryReport report = InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
+			String res = crmReportService.getYearlyReport(report);
 			response.setResponse(res);
-			logger.info("getYearlyReport response "+response.toString());
+			logger.info("getYearlyReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get short expiry report", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getShortExpiryReport", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getShortExpiryReport(@RequestBody String request)
-	{
-		logger.info("getShortExpiryReport request "+request.toString());
+	public String getShortExpiryReport(@RequestBody String request) {
+		logger.info("getShortExpiryReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockEntryReport report= InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
-			String res= crmReportService.getShortExpiryReport(report);
+
+			ItemStockEntryReport report = InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
+			String res = crmReportService.getShortExpiryReport(report);
 			response.setResponse(res);
-			logger.info("getShortExpiryReport response "+response.toString());
+			logger.info("getShortExpiryReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
-	
-	
+
 	@CrossOrigin()
+	@ApiOperation(value = "Get transit report", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getTransitReport", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getTransitReport(@RequestBody String request)
-	{
-		logger.info("getTransitReport request "+request.toString());
+	public String getTransitReport(@RequestBody String request) {
+		logger.info("getTransitReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
 		try {
-			
-			ItemStockEntryReport report= InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
-			String res= crmReportService.getTransitReport(report);
+
+			ItemStockEntryReport report = InputMapper.gson().fromJson(request, ItemStockEntryReport.class);
+			String res = crmReportService.getTransitReport(report);
 			response.setResponse(res);
-			logger.info("getTransitReport response "+response.toString());
+			logger.info("getTransitReport response " + response.toString());
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setError(e);
 		}
-		/**
-		 * sending the response...
-		 */
 		return response.toString();
 	}
 }

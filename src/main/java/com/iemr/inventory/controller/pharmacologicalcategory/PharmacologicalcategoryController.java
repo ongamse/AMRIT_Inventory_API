@@ -39,6 +39,8 @@ import com.iemr.inventory.service.pharmacologicalcategory.Pharmacologicalcategor
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 public class PharmacologicalcategoryController {
 
@@ -48,6 +50,7 @@ public class PharmacologicalcategoryController {
 	private PharmacologicalcategoryInter pharmacologicalcategoryInter;
 
 	@CrossOrigin()
+	@ApiOperation(value = "Create pharmacologicalcategory", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/createPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String createPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
@@ -74,6 +77,7 @@ public class PharmacologicalcategoryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get pharmacologicalcategory", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
@@ -99,6 +103,7 @@ public class PharmacologicalcategoryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Edit pharmacologicalcategory", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/editPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String editPharmacologicalcategory(@RequestBody String editPharmacologicalcategory) {
@@ -129,6 +134,7 @@ public class PharmacologicalcategoryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Delete pharmacologicalcategory", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/deletePharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String deletePharmacologicalcategory(@RequestBody String deletePharmacologicalcategory) {

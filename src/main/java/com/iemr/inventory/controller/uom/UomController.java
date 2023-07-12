@@ -39,6 +39,8 @@ import com.iemr.inventory.service.uom.UomInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 public class UomController {
 
@@ -48,6 +50,7 @@ public class UomController {
 	private UomInter uomInter;
 
 	@CrossOrigin()
+	@ApiOperation(value = "Create uom", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/createUom", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String createUom(@RequestBody String createUom) {
@@ -72,6 +75,7 @@ public class UomController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get uom", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getUom", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String getUom(@RequestBody String getUom) {
@@ -96,6 +100,7 @@ public class UomController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Edit uom", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/editUom", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String editUom(@RequestBody String editUom) {
@@ -127,6 +132,7 @@ public class UomController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Delete uom", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/deleteUom", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String deleteUom(@RequestBody String editUom) {

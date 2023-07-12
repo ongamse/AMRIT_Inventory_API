@@ -39,6 +39,8 @@ import com.iemr.inventory.service.stockadjustment.StockAdjustmentServiceImpl;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 public class StockAdjustmentController {
 
@@ -48,6 +50,7 @@ public class StockAdjustmentController {
 	StockAdjustmentServiceImpl stockAdjustmentServiceImpl;
 
 	@CrossOrigin()
+	@ApiOperation(value = "Stock adjustment draft", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/stockadjustmentdraft", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String stockadjustmentdraft(@RequestBody String store) {
@@ -72,6 +75,7 @@ public class StockAdjustmentController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get stock adjustment draft transaction", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getstockadjustmentdraftTransaction", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getstockadjustmentdraftTransaction(@RequestBody ItemStockEntryinput itemStockinput) {
@@ -92,6 +96,7 @@ public class StockAdjustmentController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Edit stock adjustment draft transaction", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getforEditsStockAdjustmentdraftTransaction", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getforEditsSockAdjustmentdraftTransaction(@RequestBody ItemStockEntryinput itemStockinput) {
@@ -112,6 +117,7 @@ public class StockAdjustmentController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Stock adjustment", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/stockadjustment", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String stockadjustment(@RequestBody StockAdjustment StockAdjustment) {
@@ -134,6 +140,7 @@ public class StockAdjustmentController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get stock adjustment transaction", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getStockAdjustmentTransaction", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getforeditStockAdjustmentTransaction(@RequestBody ItemStockEntryinput itemStockinput) {
@@ -154,6 +161,7 @@ public class StockAdjustmentController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Edit stock adjustment transaction", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getforEditsStockAdjustmentTransaction", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getforEditsStockAdjustmentTransaction(@RequestBody ItemStockEntryinput itemStockinput) {

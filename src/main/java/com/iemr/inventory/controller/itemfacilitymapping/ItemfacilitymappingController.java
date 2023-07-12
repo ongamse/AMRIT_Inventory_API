@@ -46,8 +46,10 @@ import com.iemr.inventory.to.itemfacilitymapping.ItemfacilityMappingTO;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
-public class M_itemfacilitymappingController {
+public class ItemfacilitymappingController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
@@ -55,6 +57,7 @@ public class M_itemfacilitymappingController {
 	private M_itemfacilitymappingInter M_itemfacilitymappingInter;
 
 	@CrossOrigin()
+	@ApiOperation(value = "Map item to store", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/mapItemtoStrore", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String mapItemtoStrore(@RequestBody String mapItemtoStrore) {
@@ -109,6 +112,7 @@ public class M_itemfacilitymappingController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Edit item to store", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/editItemtoStrore", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String editItemtoStrore(@RequestBody String editItemtoStrore) {
@@ -141,6 +145,7 @@ public class M_itemfacilitymappingController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Delete item to store", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/deleteItemtoStrore", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String deleteItemtoStrore(@RequestBody String deleteItemtoStrore) {
@@ -169,6 +174,7 @@ public class M_itemfacilitymappingController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get sub store item", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getSubStoreitem", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String getSubStroreitem(@RequestBody String deleteItemtoStrore) {
@@ -194,6 +200,7 @@ public class M_itemfacilitymappingController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get all facility mapped data", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getAllFacilityMappedData", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getAllFacilityMappedData(@RequestBody String getAllFacilityMappedData) {
@@ -219,6 +226,7 @@ public class M_itemfacilitymappingController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get item from store id", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getItemFromStoreID/{storeID}", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getItemFromStoreID(@PathVariable("storeID") Integer storeID) {
@@ -240,6 +248,7 @@ public class M_itemfacilitymappingController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Item partial search", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/itemPartialSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String itemPartialSearch(@RequestBody ItemMaster getItem) {
@@ -262,6 +271,7 @@ public class M_itemfacilitymappingController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get item batch for store transfer", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getItemBatchForStoreTransfer", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getItemBatchForStoreTransfer(@RequestBody StockTransferItem stores) {

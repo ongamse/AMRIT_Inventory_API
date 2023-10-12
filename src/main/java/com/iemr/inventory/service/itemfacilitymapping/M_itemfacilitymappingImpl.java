@@ -50,7 +50,7 @@ public class M_itemfacilitymappingImpl implements M_itemfacilitymappingInter {
 
 	@Autowired
 	ItemStockEntryRepo itemStockEntryRepo;
-	
+
 	@Autowired
 	ItemRepo itemRepo;
 
@@ -80,13 +80,11 @@ public class M_itemfacilitymappingImpl implements M_itemfacilitymappingInter {
 		ArrayList<Object[]> resultSet = m_itemfacilitymappingRepo.getItemforSubstore(providerServiceMapID, facilityID);
 		for (Object[] objects : resultSet) {
 			if (objects != null && objects.length >= 3) {
-				itemForsubStore.add(new M_itemfacilitymapping((Integer) objects[0], (String) objects[1],(Boolean) objects[2],(Integer) objects[3]));
+				itemForsubStore.add(new M_itemfacilitymapping((Integer) objects[0], (String) objects[1],
+						(Boolean) objects[2], (Integer) objects[3]));
 			}
 
-			// logger.debug("for getting state " + resultSet);
 		}
-		// logger.debug("getting response with stateid " +
-		// stateServiceMappings);
 		return itemForsubStore;
 	}
 
@@ -99,95 +97,86 @@ public class M_itemfacilitymappingImpl implements M_itemfacilitymappingInter {
 
 	@Override
 	public List<ItemInStore> getItemMastersFromStoreID(Integer storeID) {
-		// TODO Auto-generated method stub
 		ArrayList<ItemInStore> itemForsubStore = new ArrayList<ItemInStore>();
 		ArrayList<Object[]> resultSet = m_itemfacilitymappingRepo.getItemforStore(storeID);
-		if(resultSet.size()>0){
+		if (resultSet.size() > 0) {
 			Integer[] itemID = new Integer[resultSet.size()];
 			Object[] objects;
-			// for (Object[] objects : resultSet)
 			for (int i = 0; i < resultSet.size(); i++) {
 				objects = resultSet.get(i);
 				if (objects != null && objects.length >= 2) {
 
-					itemID[i]=(Integer) objects[0];
+					itemID[i] = (Integer) objects[0];
 				}
 
-				// logger.debug("for getting state " + resultSet);
 			}
 
-			ArrayList<Object[]> quant = itemStockEntryRepo.getQuantity(itemID,storeID);
+			ArrayList<Object[]> quant = itemStockEntryRepo.getQuantity(itemID, storeID);
 
 			for (Object[] objects1 : quant) {
 				if (objects1 != null && objects1.length >= 2) {
-					itemForsubStore.add(new ItemInStore((Integer) objects1[0], (Integer) objects1[1],(String) objects1[2],(Long) objects1[3]));
+					itemForsubStore.add(new ItemInStore((Integer) objects1[0], (Integer) objects1[1],
+							(String) objects1[2], (Long) objects1[3]));
 				}
 
-				// logger.debug("for getting state " + resultSet);
 			}
 		}
-	
+
 		return itemForsubStore;
 	};
-	
-	public List<ItemMaster> getItemMastersPartialSearch(String item,Integer storeID){
+
+	public List<ItemMaster> getItemMastersPartialSearch(String item, Integer storeID) {
 		List<ItemMaster> itemForsubStore = new ArrayList<ItemMaster>();
-		ArrayList<Object[]> resultSet = m_itemfacilitymappingRepo.getItemforStorePartialSearch(storeID,item);
-		if(resultSet.size()>0){
+		ArrayList<Object[]> resultSet = m_itemfacilitymappingRepo.getItemforStorePartialSearch(storeID, item);
+		if (resultSet.size() > 0) {
 			Integer[] itemID = new Integer[resultSet.size()];
 			Object[] objects;
-			// for (Object[] objects : resultSet)
 			for (int i = 0; i < resultSet.size(); i++) {
 				objects = resultSet.get(i);
 				if (objects != null && objects.length >= 2) {
 
-					itemID[i]=(Integer) objects[0];
+					itemID[i] = (Integer) objects[0];
 				}
 
-				// logger.debug("for getting state " + resultSet);
 			}
 
 			itemForsubStore = itemRepo.findByItemIDIn(itemID);
 
-			
 		}
-	
+
 		return itemForsubStore;
-		
+
 	}
 
 	@Override
-	public List<ItemStockEntry> getItemBatchForStoreTransfer(Integer facFrom, Integer facTo,String item) {
-		// TODO Auto-generated method stub
+	public List<ItemStockEntry> getItemBatchForStoreTransfer(Integer facFrom, Integer facTo, String item) {
 		List<ItemStockEntry> itemForsubStore = new ArrayList<ItemStockEntry>();
-		ArrayList<Object[]> resultSet = m_itemfacilitymappingRepo.getItemforStoreLikeItemName(facFrom,item);
-		if(resultSet.size()>0){
+		ArrayList<Object[]> resultSet = m_itemfacilitymappingRepo.getItemforStoreLikeItemName(facFrom, item);
+		if (resultSet.size() > 0) {
 			Integer[] itemID = new Integer[resultSet.size()];
 			Object[] objects;
-			// for (Object[] objects : resultSet)
 			for (int i = 0; i < resultSet.size(); i++) {
 				objects = resultSet.get(i);
 				if (objects != null && objects.length >= 2) {
 
-					itemID[i]=(Integer) objects[0];
+					itemID[i] = (Integer) objects[0];
 				}
 
-				// logger.debug("for getting state " + resultSet);
 			}
-			resultSet = m_itemfacilitymappingRepo.getItemforStoreAndItemID(facTo,itemID);
+			resultSet = m_itemfacilitymappingRepo.getItemforStoreAndItemID(facTo, itemID);
 			itemID = new Integer[resultSet.size()];
 			for (int i = 0; i < resultSet.size(); i++) {
 				objects = resultSet.get(i);
 				if (objects != null && objects.length >= 2) {
 
-					itemID[i]=(Integer) objects[0];
+					itemID[i] = (Integer) objects[0];
 				}
 
-				// logger.debug("for getting state " + resultSet);
 			}
-			itemForsubStore = itemStockEntryRepo.findByFacilityIDAndItemIDInAndQuantityInHandGreaterThanAndExpiryDateAfter(facFrom,itemID,0,new Date());
+			itemForsubStore = itemStockEntryRepo
+					.findByFacilityIDAndItemIDInAndQuantityInHandGreaterThanAndExpiryDateAfter(facFrom, itemID, 0,
+							new Date());
 
-			
 		}
 		return itemForsubStore;
 	}

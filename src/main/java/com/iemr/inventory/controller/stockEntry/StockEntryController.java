@@ -54,7 +54,7 @@ public class StockEntryController {
 	private StockEntryServiceImpl stockEntryService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Physical Stock Entry", consumes = "application/json", produces = "application/json")
+	@ApiOperation(value = "Physical stock entry", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/physicalStockEntry", headers = "Authorization", method = { RequestMethod.POST })
 	public String physicalStockEntry(@RequestBody PhysicalStockEntry physicalStockEntry) {
 
@@ -72,6 +72,7 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get item batch for store id", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getItemBatchForStoreID", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getItemBatchForStoreID(@RequestBody ItemStockEntry itemStockEntry) {
@@ -93,6 +94,7 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Allocate stock from item id", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/allocateStockFromItemID/{facilityID}", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String allocateStockFromItemID(@PathVariable("facilityID") Integer facilityID,
@@ -115,6 +117,7 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get physical stock entry", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getPhysicalStockEntry", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getPhysicalStockEntry(@RequestBody ItemStockEntryinput itemStockinput) {
@@ -136,6 +139,7 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Item batch partial search", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/itemBatchPartialSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String itemPartialSearch(@RequestBody ItemMaster getItem) {
@@ -158,6 +162,7 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Item batch with zero partial search", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/itemBatchWithZeroPartialSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String itemBatchWithZeroPartialSearch(@RequestBody ItemMaster getItem) {
@@ -180,6 +185,7 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get physical stock entry items", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getPhysicalStockEntryItems", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getPhysicalStockEntryItems(@RequestBody ItemStockEntryinput getItem) {
@@ -201,6 +207,7 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get item with quantity partial search", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getItemwithQuantityPartialSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getItemwithQuantityPartialSearch(@RequestBody ItemMaster getItem) {

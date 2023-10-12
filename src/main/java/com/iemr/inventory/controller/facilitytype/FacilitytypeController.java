@@ -39,6 +39,8 @@ import com.iemr.inventory.service.facilitytype.M_facilitytypeInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 public class FacilitytypeController {
 
@@ -48,6 +50,7 @@ public class FacilitytypeController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
+	@ApiOperation(value = "Get facility", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/getFacility", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String getFacility(@RequestBody String getFacility) {
@@ -72,6 +75,7 @@ public class FacilitytypeController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Add facility", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/addFacility", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String addFacility(@RequestBody String addFacility) {
@@ -96,6 +100,7 @@ public class FacilitytypeController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Edit facility", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/editFacility", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String editFacility(@RequestBody String editFacility) {
@@ -127,6 +132,7 @@ public class FacilitytypeController {
 	}
 
 	@CrossOrigin()
+	@ApiOperation(value = "Delete facility", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "/deleteFacility", headers = "Authorization", method = { RequestMethod.POST }, produces = {
 			"application/json" })
 	public String deleteFacility(@RequestBody String deleteFacility) {
